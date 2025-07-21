@@ -27,7 +27,7 @@ export function SecondIntro({ onNext, onBack }: SecondIntroProps) {
       />
       
       {/* Кнопки навигации */}
-      <div className="mt-10">
+      <div className="mt-4">
         <Navigation 
           canProceed={true} 
           onNext={onNext}

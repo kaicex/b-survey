@@ -63,8 +63,8 @@ export default function QuestionThreePage() {
   };
 
   const handleNext = () => {
-    // Переходим к следующему вопросу (пока что на thank-you)
-    router.push('/survey/thank-you');
+    // Переходим к следующему вопросу
+    router.push('/survey/question-four');
   };
 
   const handleBack = () => {
