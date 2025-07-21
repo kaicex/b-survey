@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 
 interface SurveyHeaderProps {
   currentQuestion: number;
@@ -17,10 +18,12 @@ export function SurveyHeader({ currentQuestion, totalQuestions }: SurveyHeaderPr
   return (
     <div className="container mx-auto max-w-[600px] px-0">
       <div className="flex flex-row items-center justify-between w-full">
-        <div className="text-[#333333] text-[20px] font-medium">Boomerang</div>
+        <Link href="/survey/intro" className="cursor-pointer">
+          <div className="text-[#828282] text-[20px] font-bold hover:text-[#6f4bff] transition-colors">Boomerang</div>
+        </Link>
         <div className="flex flex-row gap-2 items-center">
           <div className="font-inter font-normal text-[#828282] text-[14px]">{currentQuestion}/{totalQuestions}</div>
-          <div className="w-[140px] h-3 flex items-center gap-[2px]">
+          <div className="w-[220px] h-3 flex items-center gap-[2px]">
             {Array.from({ length: visibleSegments }).map((_, index) => {
               // Определяем активна ли долька
               const isActive = index < currentQuestion;
@@ -28,7 +31,7 @@ export function SurveyHeader({ currentQuestion, totalQuestions }: SurveyHeaderPr
               return (
                 <div 
                   key={index} 
-                  className={`h-full flex-1 rounded-sm ${isActive ? 'bg-[#6f4bff]' : 'bg-[#E0E0E0]'}`}
+                  className={`h-full flex-1 transition-colors ${isActive ? 'bg-[#6f4bff]' : 'bg-[#E0E0E0]'} ${index === 0 ? 'rounded-l-sm' : ''} ${index === visibleSegments - 1 ? 'rounded-r-sm' : ''}`}
                 />
               );
             })}
